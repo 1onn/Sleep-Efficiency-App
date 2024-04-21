@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sleep Efficiency Predictor</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script>
+      function validateForm() {
+        var inputs = document.getElementsByTagName("input");
+        var isValid = true;
+
+        for (var i = 0; i < inputs.length; i++) {
+          if (
+            inputs[i].value === "" &&
+            inputs[i].type !== "submit" &&
+            inputs[i].type !== "reset"
+          ) {
+            isValid = false;
+            break;
+          }
+        }
+
+        if (!isValid) {
+          alert("Please fill out all the fields.");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Sleep Efficiency Predictor</h1>
+      <form action="/" method="post" onsubmit="return validateForm()">
+        {{ form.csrf_token }}
+
+        <label for="age">Age:</label>
+        {{ form.age }}
+
+        <label>Gender:</label>
+        <br />
+        {{ form.gender }}
+
+        <label for="rem_sleep">REM sleep percentage:</label>
+        {{ form.rem_sleep }}
+
+        <label for="deep_sleep">Deep sleep percentage:</label>
+        {{ form.deep_sleep }}
+
+        <label for="light_sleep">Light sleep percentage:</label>
+        {{ form.light_sleep }}
+
+        <label for="awakenings">Number of awakenings:</label>
+        {{ form.awakenings }}
+
+        <label for="caffeine">Caffeine consumption (mg):</label>
+        {{ form.caffeine }}
+
+        <label for="alcohol">Alcohol consumption (oz):</label>
+        {{ form.alcohol }}
+
+        <label>Exercise frequency:</label>
+        <br />
+        {{ form.exercise }}
+
+        <label>Smoking status:</label>
+        <br />
+        {{ form.smoking }}
+
+        <input type="submit" value="Predict" />
+        <input type="reset" value="Reset Form" />
+      </form>
+      {% if prediction %}
+      <div class="result">
+        <h2>{{ prediction }}</h2>
+      </div>
+      {% endif %} {% if error %}
+      <div class="error">
+        <p>{{ error }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

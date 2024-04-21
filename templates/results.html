@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prediction Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Prediction Result</h1>
+      <div class="sleep">
+        <p>
+          <span class="PredictedSleepEfficiency">Predicted Sleep Efficiency:</span> {% if prediction|float < 0.65 %}
+          <span class="red">{{ '%.2f' | format(prediction|float) }}</span>
+          {% else %}
+          <span class="green">{{ '%.2f' | format(prediction|float) }}</span>
+          {% endif %}
+        </p>
+      </div>
+
+      {% set predicted_sleep_efficiency = prediction | float %} {% if
+      predicted_sleep_efficiency >= 0.80 %}
+      <p>The sleep efficiency is considered high.</p>
+      <p>Most healthy and young adults have sleep efficiencies above 90%.</p>
+      <p>
+        Keep up the good sleep habits and continue maintaining a healthy sleep
+        routine.
+      </p>
+
+      {% elif predicted_sleep_efficiency >= 0.64 %}
+      <p>The sleep efficiency is considered normal.</p>
+      <p>
+        For example, if a person spends 8 hours in bed (from 10 p.m. to 6 a.m),
+      </p>
+      <p>
+        at least 6.4 hours or more should be spent sleeping to achieve an 80% or
+        greater sleep efficiency.
+      </p>
+      <p>
+        <strong> Here are some tips to further improve sleep quality:</strong>
+      </p>
+      <ul>
+        <li>Maintain a consistent sleep schedule</li>
+        <li>Create a relaxing bedtime routine</li>
+        <li>Ensure a comfortable sleep environment</li>
+        <li>Limit exposure to electronic devices before bedtime</li>
+        <li>Avoid consuming caffeine and alcohol close to bedtime</li>
+      </ul>
+
+      {% else %}
+      <p>The sleep efficiency is considered low.</p>
+      <p>
+        Further assessment and intervention may be required to improve sleep
+        quality.
+      </p>
+      <p>Here are some tips to improve sleep quality:</p>
+      <ul>
+        <li>
+          Seek professional medical advice to identify any underlying sleep
+          disorders or issues
+        </li>
+        <li>
+          Consider making lifestyle changes such as improving sleep hygiene
+        </li>
+        <li>
+          Explore relaxation techniques or therapies that promote better sleep
+        </li>
+      </ul>
+      {% endif %}
+
+      <form action="/" method="get">
+        <input type="submit" value="Take Another Test" />
+      </form>
+    </div>
+  </body>
+</html>

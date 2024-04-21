@@ -1,0 +1,166 @@
+/* Body and Container */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("8bd79207964aa62870db1ce3a5a61cf3.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  width: 90%;
+  background-color: rgba(217, 234, 251, 0.8); /* Semi-transparent light blue */
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+  position: relative;
+  max-width: 700px;
+  color: #333;
+  text-align: left;
+}
+
+/* Headings */
+h1 {
+  color: #333;
+  text-align: center;
+  margin-top: 0;
+}
+
+h2 {
+  color: #444;
+  text-align: center;
+}
+
+/* Form and Input Fields */
+form {
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+  display: inline-block;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: calc(100% - 22px);
+  padding: 8px;
+  margin: 5px 0 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background-color: #218838;
+}
+
+/* Radio Button Styling */
+.radio-buttons input[type="radio"] {
+  display: none;
+}
+
+.radio-buttons label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.radio-buttons label:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.radio-buttons input[type="radio"]:checked + label:before {
+  background-color: #28a745;
+}
+
+/* Result Section */
+.result,
+.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 5px;
+}
+
+/* Sleep Section */
+.sleep {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.sleep span {
+  font-size: 1.2em;
+}
+
+.sleep span.red {
+  color: red;
+}
+
+.sleep span.green {
+  color: green;
+}
+
+/* Media Queries for Responsive Design */
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Adjust other elements as needed for smaller screens */
+}
+
+/* For larger screens */
+@media (min-width: 1200px) {
+  .container {
+    width: 80%;
+    padding: 40px;
+  }
+
+  /* Adjust other elements for larger screens */
+}
